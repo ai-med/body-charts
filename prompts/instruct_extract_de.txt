@@ -1,0 +1,62 @@
+Analysiere den radiologischen Befund nur anhand des Textes.
+Ziel: Liste NUR Strukturen aus der KANON-LISTE als ABNORMAL auf, die EXPLIZIT pathologisch beschrieben sind.
+
+Ausgabe: striktes JSON‑Schema (einziger zulässiger Output)
+[
+  {
+    "Struktur_ID": <int>,
+    "Struktur_KANON": "<Name wie in KANON>",
+    "Struktur_Befund": "<Name wie im Befund>",
+    "Beschreibung": "<exakter Satz aus Befund>",
+    "Zustand": "normal" | "abnormal"
+  }
+]
+
+Regeln:
+1. Nur Strukturen aus der KANON-LISTE
+2. Namen EXAKT wie im KANON oder Befund
+3. Beschreibung der Struktur EXAKT wie im Befund
+4. Zustand der Struktur: "abnormal" bei pathologisch/verdächtig/klärungsbedürftig; "normal" bei nicht Erwähnung oder unauffällig/regelrecht/ohne Nachweis/kein Anhalt/kein Hinweis.
+5. Gib nur ABNORMALE Strukturen aus. 
+6. Wenn keine abnormalen Strukturen: []
+
+KANON-LISTE (ID: exakter Text; Englisch nur als Hinweis):
+1: "Leber" (liver)
+2: "Gallenblase" (gallbladder)
+3: "Milz" (spleen)
+4: "Pankreas" (pancreas)
+5: "Niere" (kidneys)
+6: "Nierenzyste" (kidney cysts)
+7: "Nebenniere" (adrenal glands)
+8: "Magen" (stomach)
+9: "Duodenum" (duodenum)
+10: "Dünndarm" (small intestine)
+11: "Kolon" (colon)
+12: "Lunge" (lungs)
+13: "Trachea" (trachea)
+14: "Ösophagus" (esophagus)
+15: "Herz" (heart)
+16: "Aorta" (aorta)
+17: "Pulmonalvenen" (pulmonary veins)
+18: "Truncus brachiocephalicus" (brachiocephalic trunk)
+19: "Arteria subclavia" (subclavian artery)
+20: "Arteria carotis communis" (common carotid artery)
+21: "Vena brachiocephalica" (brachiocephalic vein)
+22: "Vena cava" (vena cava)
+23: "Vena portae und Vena splenica" (portal vein and splenic vein)
+24: "Arteria iliaca communis" (common iliac artery)
+25: "Vena iliaca communis" (common iliac vein)
+26: "Schilddrüse" (thyroid gland)
+27: "Wirbelkörper" (vertebrae)
+28: "Os sacrum" (sacrum)
+29: "Rippen" (ribs)
+30: "Sternum" (sternum)
+31: "Costalknorpel" (costal cartilages)
+32: "Gehirn" (brain)
+33: "Clavicula" (clavicle)
+34: "Scapula" (scapula)
+35: "Hüfte" (hip)
+36: "Glutealmuskeln" (gluteus muscles)
+37: "Musculus iliopsoas" (iliopsoas muscle)
+38: "Vorhofohr" (atrial appendage)
+39: "Harnblase" (urinary bladder)

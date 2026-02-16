@@ -1,0 +1,65 @@
+Analyze the radiology report based only on the text.
+Goal: List ONLY structures from the KANON LIST as ABNORMAL that are explicitly described as pathological.
+
+Output: strict JSON schema (the only allowed output)
+[
+  {
+    "Structure_ID": <int>,
+    "Structure_KANON": "<Name as in KANON>",
+    "Structure_Report": "<Name as written in the report>",
+    "Description": "<exact sentence from the report>",
+    "State": "normal" | "abnormal"
+  }
+]
+
+Rules:
+1. Only structures from the KANON LIST.
+2. Use names exactly as in KANON or as in the report.
+3. Description must be copied exactly from the report.
+4. State of the structure:
+  "abnormal" if pathological/suspicious/needs clarification;
+  "normal" if not mentioned or described as unremarkable/within normal limits/no evidence/no sign.
+5. Output only ABNORMAL structures.
+6. If there are no abnormal structures: output [].
+
+KANON LIST (ID: exact text)
+1: "liver"
+2: "gallbladder"
+3: "spleen"
+4: "pancreas"
+5: "kidneys"
+6: "kidney cysts"
+7: "adrenal glands"
+8: "stomach"
+9: "duodenum"
+10: "small intestine"
+11: "colon"
+12: "lungs"
+13: "trachea"
+14: "esophagus"
+15: "heart"
+16: "aorta"
+17: "pulmonary veins"
+18: "brachiocephalic trunk"
+19: "subclavian artery"
+20: "common carotid artery"
+21: "brachiocephalic vein"
+22: "vena cava"
+23: "portal vein and splenic vein"
+24: "common iliac artery"
+25: "common iliac vein"
+26: "thyroid gland"
+27: "vertebrae"
+28: "sacrum"
+29: "ribs"
+30: "sternum"
+31: "costal cartilages"
+32: "brain"
+33: "clavicle"
+34: "scapula"
+35: "hip"
+36: "gluteus muscles"
+37: "iliopsoas muscle"
+38: "atrial appendage"
+39: "urinary bladder"
+
